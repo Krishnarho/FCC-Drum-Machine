@@ -1,0 +1,161 @@
+@import url('https://fonts.googleapis.com/css2?family=Russo+One&Orbitron&family=Roboto&display=swap');
+// @import url('https://fonts.googleapis.com/css?family=Russo+One');
+
+$main-font: Russo One, 'Orbitron', 'Roboto', sans-serif;
+
+$dark-gray: grey;
+$middle-gray: #8d8d8d;
+$light-gray: #b3b3b3;
+$accent-color: orange;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: $main-font;
+}
+
+#drum-machine {
+  width: 100%;
+  height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: $middle-gray;
+}
+
+.wrapper {
+  width: 100%;
+  display: grid;
+  padding: 1.5rem;
+  grid-gap: 2rem;
+  margin-top: 3rem;
+  grid-template-columns: 1fr;
+  background-color: $light-gray;
+  border: 5px solid $accent-color;
+}
+
+.keyboard {
+  display: grid;
+  grid-gap: 0.75rem;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.keyboard .drum-pad {
+  width: 100%;
+  height: 5rem;
+  outline: none;
+  font-size: 1rem;
+  border: none;
+  border-radius: 0.3rem;
+  cursor: pointer;
+  background-color: $dark-gray;
+  color: black;
+  box-shadow: black 3px 3px 5px;
+  transition: all .3s ease-in-out
+}
+
+.keyboard button:disabled {
+  background-color: $light-gray;
+  color: gray;
+  box-shadow: gray 3px 3px 5px;
+  cursor: default;
+}
+
+.controls-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.controls-container #display {
+  width: 200px;
+  height: 50px;
+  background-color: $dark-gray;
+  padding: 15px;
+  margin: 15px auto;
+  text-align: center;
+}
+
+.controls-container .control {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.controls-container .control .switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 20px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.switch .slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: black;
+  transition: .4s;
+}
+
+.switch .slider:before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  right: 2px;
+  bottom: 2px;
+  background-color: blue;
+  transition: .4s;
+}
+
+#Power input:not(:checked)+.slider:before {
+  transform: translateX(-26px);
+  background-color: red;
+}
+
+#Bank input:not(:checked)+.slider:before {
+  transform: translateX(-26px);
+}
+
+.controls-container .rangeSlider {
+  appearance: none;
+  width: 90%;
+  height: 5px;
+  margin-bottom: 10px;
+  background: rgb(73, 73, 73);
+  border: 1px solid black;
+  outline: none;
+  box-shadow: black 1px 1px 3px;
+}
+
+.controls-container .rangeSlider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 8px;
+  height: 25px;
+  background: blue;
+  cursor: pointer;
+  box-shadow: black 1px 1px;
+}
+
+@media (min-width: 768px) {
+  .wrapper {
+    width: 660px;
+    grid-template-columns: 1fr 1fr;
+  }
+}
